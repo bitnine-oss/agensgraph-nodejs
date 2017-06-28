@@ -1,0 +1,26 @@
+{
+  "name": "agensgraph",
+  "version": "0.1.0-rc",
+  "description": "AgensGraph client for node.js",
+  "main": "./lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlogue/node-agensgraph.git"
+  },
+  "keywords": [
+    "AgensGraph",
+    "graph"
+  ],
+  "author": "Kyungtae Lee <ktlee@bitnine.net> (http://bitnine.net)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mlogue/node-agensgraph/issues"
+  },
+  "homepage": "https://github.com/mlogue/node-agensgraph#readme",
+  "dependencies": {
+	  "pg": ">= 6.1.2"
+  }
+}
