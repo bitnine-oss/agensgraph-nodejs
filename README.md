@@ -1,4 +1,4 @@
-# node-agensgraph
+# agensgraph-nodejs
 AgensGraph client for node.js. It supports Vertex, Edge and Path data types used in AgensGraph and is based on [node-postgres](https://github.com/brianc/node-postgres)
 
 ## Install
