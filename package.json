@@ -4,7 +4,7 @@
   "description": "AgensGraph client for node.js",
   "main": "./lib",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/mlogue/node-agensgraph#readme",
   "dependencies": {
-	  "pg": ">= 6.1.2"
+    "pg": ">= 6.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
   }
 }
