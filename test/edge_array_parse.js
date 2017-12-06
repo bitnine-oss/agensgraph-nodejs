@@ -22,11 +22,12 @@ describe('Query', function() {
     describe('Multi Degree', function() {
         it('should return Vertex,Edge or Path', function(done) {
 
-            var client = new ag.Client(config_local);
+            var client = new ag.Client(config);
             client.connect(function (err) {
                 if (err) throw err;
 
-                client.query('MATCH (a)-[r*..]->(b) RETURN *  limit 3;', [], function (err, result) {
+                // client.query('MATCH (a)-[r*..]->(b) RETURN *  limit 3;', [], function (err, result) {
+                client.query('MATCH p=(a)-[r]->(b) RETURN *  limit 3;', [], function (err, result) {
                     if (err) throw err;
 
                     console.log( result );
