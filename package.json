@@ -24,6 +24,9 @@
     "pg": ">= 6.1.2"
   },
   "devDependencies": {
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "pegjs": "^0.10.0",
+    "pegjs-loader": "^0.5.4",
+    "webpack": "^3.10.0"
   }
 }
