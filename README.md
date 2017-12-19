@@ -4,7 +4,7 @@ AgensGraph client for node.js. It supports Vertex, Edge and Path data types used
 ## Install
 
 ```sh
-npm install git+https://github.com/mlogue/node-agensgraph.git
+$ npm install git+https://github.com/mlogue/node-agensgraph.git
 ```
 
 ## Example
@@ -13,30 +13,50 @@ npm install git+https://github.com/mlogue/node-agensgraph.git
 var ag = require('agensgraph');
 
 var config = {
-  user: 'ktlee',
-  database: 'test',
+  user: 'bylee',
+  database: 'agens',
   host: 'localhost',
   port: 5432
 };
 
 var client = new ag.Client(config);
 
+client.connect();
+client.query('DROP GRAPH IF EXISTS gpt CASCADE');
+client.query('CREATE GRAPH gpt');
+client.query('SET graph_path = gpt');
+
 client.connect(function (err) {
   if (err) throw err;
 
-  client.query('match p=(:person {id: $1::int8})-[:knows]->(:person) return p', [933], function (err, result) {
+  client.query("CREATE p=({s: '[}\\\"'})-[:e]->() RETURN p", [], function (err, res) {
     if (err) throw err;
 
-    var path = result.rows[0].p;
-    console.log(typeof path);
-    console.log(path.start());
-    console.log(path.edges[0]);
-    console.log(path.end());
-    console.log(path.len());
+    var p = res.rows[0].p;
+    console.log(typeof p);
+    console.log(p.start());
+    console.log(p.edges[0]);
+    console.log(p.end());
+    console.log(p.len());
+  });
 
-    client.end(function (err) {
-      if (err) throw err;
-    });
+  client.query('MATCH ()-[r]->() RETURN count(*)', [], function (err, res) {
+    if (err) throw err;
+
+      console.log(res.rows[0].count);
   });
 });
+
+client.query('DROP GRAPH gpt CASCADE');
+client.end();
+
+```
+## PEGJS 
+[PEGJS](https://pegjs.org) is a simple parser generator for JavaScript.
+
+```sh
+$ sudo npm install -g pegjs
+$ cd /path/to/project-home/lib
+$ pegjs --output agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,Gid agens.pegjs
+
 ```
