@@ -4,7 +4,7 @@
   "description": "AgensGraph client for node.js",
   "main": "./lib",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha --recursive"
   },
   "repository": {
     "type": "git",
