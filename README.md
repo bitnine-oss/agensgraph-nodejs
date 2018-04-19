@@ -4,7 +4,7 @@ AgensGraph client for node.js. It supports Vertex, Edge and Path data types used
 ## Install
 
 ```sh
-$ npm install git+https://github.com/mlogue/node-agensgraph.git
+$ npm install git+https://github.com/bitnine-oss/agensgraph-nodejs.git -S
 ```
 
 ## Example
