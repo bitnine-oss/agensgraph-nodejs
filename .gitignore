@@ -59,5 +59,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# agens.js
+agens.js
 
 /.idea/

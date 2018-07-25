@@ -21,9 +21,9 @@ describe('GraphIdTest suite', function() {
             if (err) throw err;
 
             var v = res.rows[0];
-            var gid = agens.parse(v.id, {startRule: 'Gid'});
+            var gid = agens.parse(v.id, {startRule: 'GraphId'});
             assert.strictEqual(v.id, gid.oid + '.' + gid.id);
-            
+
             done();
         });
     });
@@ -32,7 +32,7 @@ describe('GraphIdTest suite', function() {
             if (err) throw err;
 
             var v = res.rows[0];
-            var gid = agens.parse(v.id, {startRule: 'Gid'});
+            var gid = agens.parse(v.id, {startRule: 'GraphId'});
             assert.strictEqual(v.id, gid.oid + '.' + gid.id);
 
             done();
