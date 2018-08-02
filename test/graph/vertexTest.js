@@ -12,11 +12,11 @@ describe('VertexTest suite', function() {
         client.query('SET graph_path = gpt');
     });
     after('tearDown', function(){
-        client.query('DROP GRAPH gpt CASCADE');
-        client.end();
+        client.query('DROP GRAPH gpt CASCADE')
+            .then(() => client.end());
 
     });
-    it('testVertex case 1', function(done) {
+    it('Test Vertex Properties', function(done) {
         client.query("CREATE (n:v {s: '', l: 0, d: 0.0, f: false, t: true, z: null, a: [], o: {}}) RETURN n", [], function (err, res) {
             if (err) throw err;
 
@@ -39,7 +39,7 @@ describe('VertexTest suite', function() {
             done();
         });
     });
-    it('testVertex case 2', function(done){
+    it('Test Vertex Match', function(done){
         client.query('MATCH (n) RETURN count(*)', [], function (err, res) {
             if (err) throw err;
 

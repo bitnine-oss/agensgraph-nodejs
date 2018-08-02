@@ -12,11 +12,11 @@ describe('PathTest suite', function() {
         client.query('SET graph_path = gpt');
     });
     after('tearDown', function(){
-        client.query('DROP GRAPH gpt CASCADE');
-        client.end();
+        client.query('DROP GRAPH gpt CASCADE')
+            .then(() => client.end());
 
     });
-    it('testPath case 1', function(done) {
+    it('Test Create Path', function(done) {
         client.query("CREATE p=({s: '[}\\\"'})-[:e]->() RETURN p", [], function (err, res) {
             if (err) throw err;
 
@@ -26,7 +26,7 @@ describe('PathTest suite', function() {
             done();
         });
     });
-    it('testPath case 2', function(done){
+    it('Test Match Path', function(done){
         client.query('MATCH ()-[r]->() RETURN count(*)', [], function (err, res) {
             if (err) throw err;
 
