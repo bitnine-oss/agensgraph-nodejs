@@ -4,21 +4,22 @@ var agens = require("../../lib/agens.js");
 var config = require('../config');
 
 describe('GraphIdTest suite', function() {
-	var client;
-	before('setUp', function(){
-		client = new ag.Client(config);
-		client.connect();
-		client.query('DROP GRAPH IF EXISTS gpt CASCADE');
-		client.query('CREATE GRAPH gpt');
-		client.query('SET graph_path = gpt');
-	});
-	after('tearDown', function(){
-		client.query('DROP GRAPH gpt CASCADE');
-		client.end();
-	});
-	it('testGraphId case 1', function(done) {
-		client.query("CREATE (n {}) RETURN id(n)", [], function (err, res) {
-			if (err) throw err;
+    var client;
+    before('setUp', function(){
+        client = new ag.Client(config);
+        client.connect();
+        client.query('DROP GRAPH IF EXISTS gpt CASCADE');
+        client.query('CREATE GRAPH gpt');
+        client.query('SET graph_path = gpt');
+    });
+    after('tearDown', function(){
+        client.query('DROP GRAPH gpt CASCADE')
+            .then(() => client.end());
+
+    });
+    it('Test Graph Id', function(done) {
+        client.query("CREATE (n {}) RETURN id(n)", [], function (err, res) {
+            if (err) throw err;
 
             var v = res.rows[0];
             var gid = agens.parse(v.id, {startRule: 'GraphId'});
@@ -27,7 +28,7 @@ describe('GraphIdTest suite', function() {
             done();
         });
     });
-    it('testGraphId case 2', function(done){
+    it('Test MATCH Graph Id', function(done){
         client.query('MATCH (n) RETURN id(n)', [], function (err, res) {
             if (err) throw err;
 
