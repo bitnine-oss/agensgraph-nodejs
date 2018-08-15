@@ -20,22 +20,22 @@ describe('GraphIdTest suite', function() {
 		client.query("CREATE (n {}) RETURN id(n)", [], function (err, res) {
 			if (err) throw err;
 
-			var v = res.rows[0];
-			var gid = agens.parse(v.id, {startRule: 'GraphId'});
-			assert.strictEqual(v.id, gid.oid + '.' + gid.id);
+            var v = res.rows[0];
+            var gid = agens.parse(v.id, {startRule: 'GraphId'});
+            assert.strictEqual(v.id, gid.oid + '.' + gid.id);
 
-			done();
-		});
-	});
-	it('testGraphId case 2', function(done){
-		client.query('MATCH (n) RETURN id(n)', [], function (err, res) {
-			if (err) throw err;
+            done();
+        });
+    });
+    it('testGraphId case 2', function(done){
+        client.query('MATCH (n) RETURN id(n)', [], function (err, res) {
+            if (err) throw err;
 
-			var v = res.rows[0];
-			var gid = agens.parse(v.id, {startRule: 'GraphId'});
-			assert.strictEqual(v.id, gid.oid + '.' + gid.id);
+            var v = res.rows[0];
+            var gid = agens.parse(v.id, {startRule: 'GraphId'});
+            assert.strictEqual(v.id, gid.oid + '.' + gid.id);
 
-			done();
-		})
-	});
+            done();
+        })
+    });
 });
