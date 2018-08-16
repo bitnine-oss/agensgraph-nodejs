@@ -12,10 +12,11 @@ describe('EdgeTest suite', function() {
         client.query('SET graph_path = gpt');
     });
     after('tearDown', function(){
-        client.query('DROP GRAPH gpt CASCADE');
-        client.end();
+        client.query('DROP GRAPH gpt CASCADE')
+            .then(() => client.end());
+
     });
-    it('testEdge case 1', function(done) {
+    it('Test Edge Properties', function(done) {
         client.query("CREATE (n)-[r:e{s: '', l: 0, d: 0.0, f: false, t: true, z: null, a: [], o: {}}]->(m) RETURN n, r, m", [], function (err, res) {
             if (err) throw err;
 
@@ -42,7 +43,7 @@ describe('EdgeTest suite', function() {
             done();
         });
     });
-    it('testEdge case 2', function(done){
+    it('Test Edge Match', function(done){
         client.query('MATCH ()-[r]->() RETURN count(*)', [], function (err, res) {
             if (err) throw err;
 

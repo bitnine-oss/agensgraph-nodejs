@@ -12,11 +12,11 @@ describe('ParameterQueryTest suite', function() {
         client.query('SET graph_path = gpt');
     });
     after('tearDown', function(){
-        client.query('DROP GRAPH gpt CASCADE');
-        client.end()
+        client.query('DROP GRAPH gpt CASCADE')
+            .then(() => client.end());
 
     });
-    it('testParameterQuery case 1', function(done) {
+    it('Test Cypher Type Parameter Queries', function(done) {
         const q = {
             text: "CREATE (n:v {s: $1, l: $2, d: $3, f: $4, t: $5, a: $6, o: $7}) RETURN n",
             types: [25, 23, 701, 16, 16, 1007, 3802], 
@@ -36,7 +36,7 @@ describe('ParameterQueryTest suite', function() {
             done();
         });
     });
-    it('testParameterQuery case 2', function(done) {
+    it('Test Objects and Array Parameter Queries', function(done) {
         const q = {
             text: "CREATE (n:v {ss: $1, ll: $2, dd: $3, ff: $4, tt: $5, aa: $6, oo: $7}) RETURN n",
             types: [1009, 1007, 1022, 1000, 1000, 1007, 3807], 

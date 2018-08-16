@@ -12,10 +12,11 @@ describe('EdgeArrayTest suite', function() {
         client.query('SET graph_path = gpt');
     });
     after('tearDown', function(){
-        client.query('DROP GRAPH gpt CASCADE');
-        client.end();
+        client.query('DROP GRAPH gpt CASCADE')
+            .then(() => client.end());
+
     });
-    it('testEdgeArray case 1', function(done) {
+    it('Test Edge Array', function(done) {
         client.query("CREATE (v1:vv{n: []})-[e1:r1]->(v2)-[e2:r2{l: 0}]->(v3)-[e3:r3{d: 0.0}]->(v4) RETURN v1, e1, v2, e2, v3, e3, v4", [], function (err, res) {
             if(err) return err;
 
@@ -30,7 +31,7 @@ describe('EdgeArrayTest suite', function() {
             done();
         });
     });
-    it('testEdgeArray case 2', function(done){
+    it('Test Match on VLE Array', function(done){
         client.query('MATCH (n)-[r*..]->(m) RETURN n, r, m', [], function (err, res) {
             if (err) throw err;
 
@@ -42,7 +43,7 @@ describe('EdgeArrayTest suite', function() {
             done();
         })
     });
-    it('testEdgeArray case 3', function(done){
+    it('Test Match on Array & Identity', function(done){
         client.query("MATCH p=()-[]->()-[]->()  RETURN relationships(p)", [], function (err, res) {
             if (err) throw err;
 
