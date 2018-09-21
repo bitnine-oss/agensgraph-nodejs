@@ -18,7 +18,7 @@
     "graph"
   ],
   "author": "Kyungtae Lee <ktlee@bitnine.net> (http://bitnine.net)",
-  "license": "Apache-2.0",
+  "license": "GNU Affero General Public License",
   "bugs": {
     "url": "https://github.com/mlogue/node-agensgraph/issues"
   },

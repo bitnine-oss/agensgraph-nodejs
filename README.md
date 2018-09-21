@@ -55,3 +55,6 @@ $ cd /path/to/project-home/lib
 $ pegjs --output agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,Gid agens.pegjs
 
 ```
+
+## License
+[GNU Affero General Public License](https://www.gnu.org/licenses/agpl.html)
