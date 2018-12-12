@@ -11,18 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mlogue/node-agensgraph.git"
+    "url": "git+https://github.com/bitnine-oss/agensgraph-nodejs.git"
   },
   "keywords": [
     "AgensGraph",
     "graph"
   ],
-  "author": "Kyungtae Lee <ktlee@bitnine.net> (http://bitnine.net)",
+  "author": "Beomyong Lee <bylee@bitnine.net> (https://bitnine.net)",
   "license": "GNU Affero General Public License",
   "bugs": {
-    "url": "https://github.com/mlogue/node-agensgraph/issues"
+    "url": "https://github.com/bitnine-oss/agensgraph-nodejs/issues"
   },
-  "homepage": "https://github.com/mlogue/node-agensgraph#readme",
+  "homepage": "https://github.com/bitnine-oss/agensgraph-nodejs#readme",
   "dependencies": {
     "pg": ">= 6.1.2"
   },
