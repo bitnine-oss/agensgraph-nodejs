@@ -18,7 +18,7 @@
     "graph"
   ],
   "author": "Beomyong Lee <bylee@bitnine.net> (https://bitnine.net)",
-  "license": "GNU Affero General Public License",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bitnine-oss/agensgraph-nodejs/issues"
   },
