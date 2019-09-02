@@ -47,7 +47,7 @@ describe('EdgeTest suite', function() {
         client.query('MATCH ()-[r]->() RETURN count(*)', [], function (err, res) {
             if (err) throw err;
 
-            assert.strictEqual(res.rows[0].count, '1');
+            assert.strictEqual(res.rows[0].count, 1);
 
             done();
         })
