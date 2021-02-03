@@ -4,9 +4,7 @@
   "description": "AgensGraph client for node.js",
   "main": "./lib",
   "scripts": {
-    "postinstall": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
-    "prepack": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
-    "pretest": "pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
+    "generate-pegjs": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
     "test": "./node_modules/.bin/mocha --recursive"
   },
   "repository": {
@@ -24,13 +22,11 @@
   },
   "homepage": "https://github.com/bitnine-oss/agensgraph-nodejs#readme",
   "dependencies": {
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.20",
     "pg": ">= 6.1.2"
   },
   "devDependencies": {
-    "mocha": "^4.0.1",
-    "pegjs": "^0.10.0",
-    "pegjs-loader": "^0.5.4",
-    "webpack": "^3.10.0"
+    "mocha": "^8.2.1",
+    "pegjs": "^0.10.0"
   }
 }
