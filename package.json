@@ -4,8 +4,8 @@
   "description": "AgensGraph client for node.js",
   "main": "./lib",
   "scripts": {
-    "postinstall": "pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
-    "prepack": "pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
+    "postinstall": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
+    "prepack": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
     "pretest": "pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
     "test": "./node_modules/.bin/mocha --recursive"
   },
