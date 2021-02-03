@@ -1,26 +1,26 @@
-var assert = require('assert');
-var ag = require('../../lib');
-var config = require('../config');
+const assert = require('assert');
+const ag = require('../../lib');
+const config = require('../config');
 
-describe('VertexTest suite', function() {
-    var client;
-    before('setUp', function(){
+describe('VertexTest suite', function () {
+    let client;
+    before('setUp', function () {
         client = new ag.Client(config);
         client.connect();
         client.query('DROP GRAPH IF EXISTS gpt CASCADE');
         client.query('CREATE GRAPH gpt');
         client.query('SET graph_path = gpt');
     });
-    after('tearDown', function(){
+    after('tearDown', function () {
         client.query('DROP GRAPH gpt CASCADE')
             .then(() => client.end());
 
     });
-    it('Test Vertex Properties', function(done) {
+    it('Test Vertex Properties', function (done) {
         client.query("CREATE (n:v {s: '', l: 0, d: 0.0, f: false, t: true, z: null, a: [], o: {}}) RETURN n", [], function (err, res) {
             if (err) throw err;
 
-            var v = res.rows[0].n;          
+            var v = res.rows[0].n;
             assert.strictEqual(v.label, 'v');
             assert.strictEqual(v.props.s, '');
             assert.strictEqual(v.props.l, 0);
@@ -33,13 +33,13 @@ describe('VertexTest suite', function() {
             assert.equal(v.props.t, 1);
             assert.strictEqual(v.props.t, true);
             assert.strictEqual(v.props.z, undefined);
-            assert.deepEqual(v.props.a, []);
-            assert.deepEqual(v.props.o, {});
-            
+            assert.deepStrictEqual(v.props.a, []);
+            assert.deepStrictEqual(v.props.o, {});
+
             done();
         });
     });
-    it('Test Vertex Match', function(done){
+    it('Test Vertex Match', function (done) {
         client.query('MATCH (n) RETURN count(*)', [], function (err, res) {
             if (err) throw err;
 
