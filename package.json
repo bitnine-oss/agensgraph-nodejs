@@ -1,8 +1,8 @@
 {
-  "name": "agensgraph-driver",
+  "name": "@bitnine-oss/ag-driver",
   "version": "0.1.0",
   "description": "AgensGraph client for node.js",
-  "main": "./lib",
+  "main": "./build",
   "scripts": {
     "generate-pegjs": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./pegjs/agens.pegjs",
     "test": "./node_modules/.bin/mocha --recursive",
@@ -15,7 +15,8 @@
   },
   "keywords": [
     "AgensGraph",
-    "graph"
+    "graph",
+    "driver"
   ],
   "author": "Alex Kwak <ms.kwak@bitnine.net> (https://bitnine.net)",
   "license": "Apache-2.0",
