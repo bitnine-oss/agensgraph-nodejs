@@ -216,3 +216,4 @@ dist
 test/config.js
 /build/
 /lib/agens.js
+/src/agens.ts

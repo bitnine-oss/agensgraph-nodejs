@@ -2,4 +2,5 @@
 test/
 pegjs/
 lib/
+build/
 package-lock.json

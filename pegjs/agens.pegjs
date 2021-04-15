@@ -1,43 +1,41 @@
 //  pegjs --output agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId agens.pegjs
 
 {
-    var g = require("./graph.js")
+    let edgeList: Edge[] = []
+    let vertexList: Vertex[] = []
+    const pathList: Path[] = []
 
-    var EdgeList = []
-    var VertexList = []
-    var PathList = []
-
-    function num2GraphId(numstr) {
-        var numpart = numstr.split('.')
-        return new g.GraphId(numpart[0],numpart[1])
+    function num2GraphId(numstr: string) {
+        const numpart = numstr.split('.')!
+        return g.GraphId(numpart[0]!, numpart[1]!)
     }
 
-    function mkEdge(label, id, sid, eid, props) {
-        var eg =  new g.Edge(label, id, sid, eid, props)
-        EdgeList.push(eg);
+    function mkEdge(label: string, id: string, sid: string, eid: string, props: object) {
+        const eg = g.Edge(label, id, sid, eid, props)
+        edgeList.push(eg);
         return eg;
     }
 
-    function mkVertex(label, id, props) {
-        var vtx = new g.Vertex(label, id, props);
-        VertexList.push(vtx);
+    function mkVertex(label: string, id: string, props: object) {
+        const vtx = g.Vertex(label, id, props);
+        vertexList.push(vtx);
         return vtx;
     }
 
     function mkPath() {
-        var p = new g.Path(VertexList, EdgeList);
+        const p = g.Path(vertexList, edgeList);
 
-        VertexList = []
-        EdgeList = []
+        vertexList = []
+        edgeList = []
 
-        PathList.push(p);
+        pathList.push(p);
         return p;
     }
 }
 
-EdgeArray = "[" _Edge ("," _Edge)* "]"  { return EdgeList }
+EdgeArray = "[" _Edge ("," _Edge)* "]"  { return edgeList }
 
-VertexArray = "[" _Vertex ("," _Vertex)* "]"  { return VertexList }
+VertexArray = "[" _Vertex ("," _Vertex)* "]"  { return vertexList }
 
 _Vertex =  label:Id "[" id:GraphId "]" props:Object {  return mkVertex(label, id, props); }
 
@@ -47,7 +45,7 @@ _Path = "[" _Vertex "," _Edge "," _Vertex ("," _Edge "," _Vertex)* "]"  {  retur
 
 Id = ([_\$A-Za-z][_\$0-9A-Za-z]*) { return text(); }
 
-GraphId = graphid:Number { return num2GraphId(text());}
+GraphId = graphid:Number { return num2GraphId(graphid);}
 
 
 

@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import {parse} from './agens'
+import pgTypes from 'pg-types'
 
-const agens = require("./agens.js");
-
-function makeParser(startRuleName) {
-    return function (rawStr) {
+function makeParser(startRuleName: string) {
+    return function (rawStr?: string | null) {
         if (!rawStr) return null;
-        return agens.parse(rawStr, {startRule: startRuleName})
+        return parse(rawStr, {startRule: startRuleName})
     }
 }
 
@@ -37,17 +37,15 @@ function makeParser(startRuleName) {
 *
 * */
 
-// add graph data types
-const dfltTypes = require('pg').types;
-dfltTypes.setTypeParser(7012, makeParser('_Vertex'));
-dfltTypes.setTypeParser(7011, makeParser('VertexArray'));
-dfltTypes.setTypeParser(7022, makeParser('_Edge'));
-dfltTypes.setTypeParser(7021, makeParser('EdgeArray'));
-dfltTypes.setTypeParser(7032, makeParser('_Path'));
+pgTypes.setTypeParser(7012, makeParser('_Vertex'));
+pgTypes.setTypeParser(7011, makeParser('VertexArray'));
+pgTypes.setTypeParser(7022, makeParser('_Edge'));
+pgTypes.setTypeParser(7021, makeParser('EdgeArray'));
+pgTypes.setTypeParser(7032, makeParser('_Path'));
 
 
 // override connection parameters
-const overridePGENVConfig = function (key) {
+const overridePGENVConfig = function (key: string) {
     const uKey = key.toUpperCase();
     const val = process.env['AG' + uKey];
     if (val)
@@ -65,11 +63,14 @@ overridePGENVConfig('CLIENT_ENCODING');
 overridePGENVConfig('APPNAME');
 
 const AgensGraph = function () {
-    this.pg = require('pg');
-    this.Client = this.pg.Client;
-    this.Query = this.pg.Query;
-    this.Pool = this.pg.Pool;
-    this.Connection = this.pg.Connection;
+    const pg = require('pg');
+    return {
+        pg: pg,
+        Client: pg.Client,
+        Query: pg.Query,
+        Pool: pg.Pool,
+        Connection: pg.Connection,
+    }
 };
 
-module.exports = new AgensGraph();
+module.exports = AgensGraph();
