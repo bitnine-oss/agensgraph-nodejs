@@ -26,7 +26,7 @@ Connecting programmatically can be done by passing an object with config values 
 client.connect() to establish a connection:
 
 ```js
-var ag = require('@bitnine-oss/agensgraph-driver');
+var ag = require('@bitnine-oss/ag-driver');
 var config = {
     user: 'username',
     password: 'password',
@@ -52,7 +52,7 @@ following examples illustrate the different possible methods of querying.
 Users can retrieve Cypher data by passing text directly to client.query():
 
 ```js
-var ag = require('@bitnine-oss/agensgraph-driver');
+var ag = require('@bitnine-oss/ag-driver');
 const client = new ag.Client(Config);
 
 client.connect();
