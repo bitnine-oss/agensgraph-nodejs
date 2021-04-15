@@ -214,3 +214,5 @@ dist
 
 # unit test connection configuration
 test/config.js
+/build/
+/lib/agens.js

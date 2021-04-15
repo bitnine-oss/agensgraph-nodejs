@@ -1,11 +1,13 @@
 {
-  "name": "agensgraph",
-  "version": "0.1.0-rc",
+  "name": "agensgraph-driver",
+  "version": "0.1.0",
   "description": "AgensGraph client for node.js",
   "main": "./lib",
   "scripts": {
-    "generate-pegjs": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./lib/agens.pegjs",
-    "test": "./node_modules/.bin/mocha --recursive"
+    "generate-pegjs": "npx pegjs --output ./lib/agens.js --allowed-start-rules EdgeArray,VertexArray,_Edge,_Vertex,_Path,GraphId ./pegjs/agens.pegjs",
+    "test": "./node_modules/.bin/mocha --recursive",
+    "build": "babel -d ./build ./lib -s",
+    "prepublish": "npm run generate-pegjs && npm run build"
   },
   "repository": {
     "type": "git",
@@ -15,7 +17,7 @@
     "AgensGraph",
     "graph"
   ],
-  "author": "Beomyong Lee <bylee@bitnine.net> (https://bitnine.net)",
+  "author": "Alex Kwak <ms.kwak@bitnine.net> (https://bitnine.net)",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bitnine-oss/agensgraph-nodejs/issues"
@@ -26,6 +28,12 @@
     "pg": ">= 6.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.15",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/register": "^7.12.13",
     "mocha": "^8.2.1",
     "pegjs": "^0.10.0"
   }
