@@ -1,4 +1,5 @@
-# @bitnine-oss/agensgraph-driver
+# Node.js driver for AgensGraph
+@bitnine-oss/ag-driver
 
 AgensGraph client for node.js. To be used concurrently with [node-postgres](https://github.com/brianc/node-postgres).
 Adds AgensGraph compatibility for node-postgres. Support for the Cypher query language, and vertex, edge and path graph
