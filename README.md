@@ -1,4 +1,5 @@
 # AgensGraph client for Node.js
+
 https://www.npmjs.com/package/@bitnine-oss/ag-driver
 
 AgensGraph client for node.js. To be used concurrently with [node-postgres](https://github.com/brianc/node-postgres).
@@ -170,6 +171,13 @@ The following is a brief explanation detailing the different datatypes handled b
 | `Vertex`     |Corresponds to `vertex` type in AgensGraph. It supports access methods for the label and properties. | label, id, props
 | `Edge`       | Corresponds to `edge` type in AgensGraph. It supports access methods for the label and properties. | label, id, start, end, props
 | `Path`       | Corresponds to `graphpath` type in AgensGraph. It supports access methods for the length of the path, and accessing for vertexes and edges in the path. | vertices, edges, start, end, len
+
+## Related projects
+
+- **drivine**
+    - Graph database driver for Node.js and TypeScript implemented on top of the NestJS platform.
+    - https://github.com/liberation-data/drivine
+    - https://drivine.org/
 
 ## TODO
 
